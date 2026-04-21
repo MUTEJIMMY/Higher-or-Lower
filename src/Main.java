@@ -10,19 +10,38 @@ void main() {
 
     System.out.print("I have a random number between 1 and 100. I want you to try to guess it in 7 guesses: ");
 
+    int sevenOrLess = 0;
+    boolean untilGuessedRight = true;
 
-boolean untilGuessedRight = true;
-while(untilGuessedRight) {
+    while(untilGuessedRight && sevenOrLess < 7) {
+
+    String hOrl = "";
+
     int userGuess = scan.nextInt();
 
-    if (userGuess < randomNum) {
-        System.out.println("Lower");
-    } else if (userGuess > randomNum) {
-        System.out.println("Higher");
-    } else {
+    if ((userGuess < randomNum) && sevenOrLess < 6) {
+
+        hOrl = "Higher";
+
+        System.out.println(hOrl+ " guess again: ");
+
+    } else if ((userGuess > randomNum) && sevenOrLess < 6) {
+
+        hOrl = "Lower";
+
+        System.out.println(hOrl+ " guess again: ");
+
+    } else if(userGuess == randomNum) {
         System.out.println("You got it right");
+
         untilGuessedRight = false;
+    }else{
+
+        System.out.println("You ran out of guesses idiot bum boy");
+
     }
+
+    sevenOrLess++;
 }
 
 

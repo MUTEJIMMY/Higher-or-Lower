@@ -3,18 +3,30 @@ import java.util.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+private void waiting(int second){
+    second *= 1000;
+    try {
+        Thread.sleep(second);
+    } catch (InterruptedException e) {
+        throw new RuntimeException(e);
+    }
+}
+
 void main() {
     Scanner scan  =  new Scanner(System.in);
     Random rand = new Random();
 
     int randomNum = rand.nextInt(1,101);
 
-    System.out.print("I have a random number between 1 and 100. I want you to try to guess it in 7 guesses: ");
-
 
     int points = 0;
     boolean repeat = true;
+
     while(repeat) {
+        System.out.print("I have a random number between 1 and 100. I want you to try to guess it in 7 guesses: ");
+
+
         int sevenOrLess = 0;
         boolean untilGuessedRight = true;
         int userGuess = 0;
@@ -39,13 +51,13 @@ void main() {
 
                 hOrl = "Higher";
 
-                System.out.println(hOrl + " guess again: ");
+                System.out.print(hOrl + " guess again: ");
 
             } else if ((userGuess > randomNum) && sevenOrLess < 6) {
 
                 hOrl = "Lower";
 
-                System.out.println(hOrl + " guess again: ");
+                System.out.print(hOrl + " guess again: ");
 
             } else if (userGuess == randomNum) {
                 System.out.println("You got it right");
@@ -53,7 +65,7 @@ void main() {
                 untilGuessedRight = false;
             } else {
 
-                System.out.println("You ran out of guesses idiot bum boy");
+                System.out.println("You ran out of guesses, see you next time.");
 
             }
 
@@ -61,7 +73,11 @@ void main() {
         }
         points++;
 
-        System.out.print("Do you want to try to guess another number(Type Y for repeat, N to not repeat: ");
+        waiting(1);
+
+        scan.nextLine();
+
+        System.out.print("Do you want to try to guess another number(Type Y for repeat, N to not repeat): ");
 
         String reDo = "";
 
@@ -72,13 +88,19 @@ void main() {
             } catch (Exception e) {
 
             }
-            if ((reDo.equalsIgnoreCase("y")) || reDo.equalsIgnoreCase("n")){
+            if (reDo.equalsIgnoreCase("y")){
                 c2 = false;
+            }else if(reDo.equalsIgnoreCase("n")){
+                repeat = c2 = false;
             }
             else{
                 System.out.print("Please type Y to repeat or N to not repeat: ");
             }
         }
     }
+
+    waiting(1);
+
+    System.out.println("Thank you for using my game. Your got " + points + ".");
 
 }

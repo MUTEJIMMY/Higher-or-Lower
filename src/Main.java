@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -79,15 +78,11 @@ void main() {
 
         System.out.print("Do you want to try to guess another number(Type Y for repeat, N to not repeat): ");
 
-        String reDo = "";
+        String reDo;
 
         boolean c2 = true;
         while(c2) {
-            try {
                 reDo = scan.nextLine();
-            } catch (Exception e) {
-
-            }
             if (reDo.equalsIgnoreCase("y")){
                 c2 = false;
             }else if(reDo.equalsIgnoreCase("n")){
